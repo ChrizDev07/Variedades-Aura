@@ -12,6 +12,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser'
+    minify: 'esbuild', // ✅ Cambiado: 'terser' -> 'esbuild' (no requiere instalación adicional)
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Opcional: divide el código en chunks para mejor rendimiento
+          vendor: ['react', 'react-dom', 'lucide-react'],
+          supabase: ['@supabase/supabase-js']
+        }
+      }
+    }
   }
 })
