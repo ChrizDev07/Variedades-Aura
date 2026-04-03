@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   VARIABLES GLOBALES
+   ======================================== */
+:root {
+  /* Colores principales */
+  --color-primary: #7c3aed;
+  --color-primary-dark: #6d28d9;
+  --color-primary-light: #8b5cf6;
+  --color-secondary: #ec4899;
+  --color-secondary-dark: #db2777;
+  --color-accent: #06b6d4;
+  
+  /* Colores de fondo */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 50%, #f0fdf4 100%);
+  
+  /* Colores de texto */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  
+  /* Espaciado */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Bordes */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Transiciones */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   ESTILOS BASE
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADA
+   ======================================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border-radius: var(--radius-full);
+  transition: all var(--transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-secondary-dark) 100%);
+}
+
+/* ========================================
+   SELECCIÓN DE TEXTO
+   ======================================== */
+::selection {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+}
+
+::-moz-selection {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+}
+
+/* ========================================
+   CLASES PERSONALIZADAS
+   ======================================== */
+
+/* Card Aura */
+.card-aura {
+  @apply bg-white rounded-2xl shadow-sm border border-gray-100 transition-all duration-300;
+}
+
+.card-aura:hover {
+  @apply shadow-xl transform -translate-y-1;
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+/* Botón Primario */
+.btn-primary {
+  @apply text-white font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   INPUTS Y SELECTS - CORREGIDOS
+   ======================================== */
+
+/* Estilos base para inputs, selects y textarea */
+input, 
+select, 
+textarea {
+  @apply w-full p-3 rounded-xl border border-gray-200 outline-none transition-all;
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+/* Focus states */
+input:focus, 
+select:focus, 
+textarea:focus {
+  @apply ring-2 ring-purple-500;
+  border-color: var(--color-primary) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+/* Hover states */
+input:hover, 
+select:hover, 
+textarea:hover {
+  border-color: var(--color-primary-light) !important;
+}
+
+/* Estilos específicos para selects */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* Opciones del select */
+select option {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  padding: 0.5rem;
+}
+
+/* Opción seleccionada */
+select option:checked {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+  color: white !important;
+}
+
+/* Todos los elementos dentro de select */
+select * {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Forzar colores en selects dentro de tarjetas blancas */
+.bg-white select,
+.bg-white input,
+.bg-white select option,
+.card-aura select,
+.card-aura input,
+div.bg-white select {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+/* Para selects deshabilitados */
+select:disabled {
+  background-color: #f3f4f6 !important;
+  color: #9ca3af !important;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   BADGES
+   ======================================== */
+.badge {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold transition-all;
+}
+
+.badge-primary {
+  @apply bg-purple-100 text-purple-800;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-danger {
+  @apply bg-red-100 text-red-800;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-info {
+  @apply bg-blue-100 text-blue-800;
+}
+
+/* ========================================
+   BOTONES SECUNDARIOS
+   ======================================== */
+.btn-secondary {
+  @apply bg-gray-100 text-gray-700 font-semibold py-2.5 px-5 rounded-xl transition-all hover:bg-gray-200 hover:transform hover:-translate-y-0.5 flex items-center justify-center gap-2;
+}
+
+.btn-outline {
+  @apply border-2 border-purple-500 text-purple-600 font-semibold py-2.5 px-5 rounded-xl transition-all hover:bg-purple-500 hover:text-white hover:transform hover:-translate-y-0.5 flex items-center justify-center gap-2;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ========================================
+   TABLAS
+   ======================================== */
+.table-aura {
+  @apply w-full bg-white rounded-xl overflow-hidden;
+}
+
+.table-aura thead {
+  @apply bg-gradient-to-r from-gray-50 to-gray-100;
+}
+
+.table-aura th {
+  @apply px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider;
+}
+
+.table-aura td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-700;
+}
+
+.table-aura tbody tr {
+  @apply border-b border-gray-100 transition-all hover:bg-purple-50;
+}
+
+/* ========================================
+   MODALES
+   ======================================== */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  @apply bg-white rounded-2xl p-6 max-w-lg w-full mx-4 shadow-2xl;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ========================================
+   LOADING SPINNER
+   ======================================== */
+.spinner {
+  @apply inline-block w-6 h-6 border-2 border-purple-200 border-t-purple-600 rounded-full;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ========================================
+   TOOLTIPS
+   ======================================== */
+[tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+[tooltip]:before {
+  content: attr(tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  @apply bg-gray-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap;
+  display: none;
+  margin-bottom: 5px;
+}
+
+[tooltip]:hover:before {
+  display: block;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.hover-lift {
+  transition: transform var(--transition);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+  .card-aura {
+    @apply rounded-xl;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-outline {
+    @apply py-2 px-4 text-sm;
+  }
+  
+  input, select, textarea {
+    @apply p-2.5 text-sm;
+  }
+  
+  .table-aura th,
+  .table-aura td {
+    @apply px-4 py-2;
+  }
+  
+  .modal-content {
+    @apply p-4 m-4;
+  }
+}
+
+/* ========================================
+   DARK MODE (Opcional)
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1f2937;
+    --bg-secondary: #111827;
+    --bg-tertiary: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-tertiary: #9ca3af;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #1f2937 100%);
+  }
+  
+  .card-aura {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  input, select, textarea {
+    background-color: #374151 !important;
+    color: #f9fafb !important;
+    border-color: #4b5563 !important;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    background-color: #374151 !important;
+    color: #f9fafb !important;
+  }
+  
+  select option {
+    background-color: #374151 !important;
+    color: #f9fafb !important;
+  }
+  
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-700 text-gray-200 hover:bg-gray-600;
+  }
+}
+
+/* ========================================
+   IMPRESIÓN
+   ======================================== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .card-aura {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* ========================================
+   CLASES DE ACCESIBILIDAD
+   ======================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus-visible:focus-visible {
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2;
+}

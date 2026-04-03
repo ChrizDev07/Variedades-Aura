@@ -1,0 +1,595 @@
+/* ========================================
+   VARIABLES CSS (Design System)
+   ======================================== */
+:root {
+  /* Colores principales */
+  --aura-primary: #7c3aed;
+  --aura-primary-dark: #6d28d9;
+  --aura-primary-light: #8b5cf6;
+  --aura-secondary: #ec4899;
+  --aura-secondary-dark: #db2777;
+  --aura-accent: #06b6d4;
+  
+  /* Colores de estado */
+  --aura-success: #10b981;
+  --aura-danger: #ef4444;
+  --aura-warning: #f59e0b;
+  --aura-info: #3b82f6;
+  
+  /* Colores de fondo */
+  --aura-bg-primary: #ffffff;
+  --aura-bg-secondary: #f9fafb;
+  --aura-bg-tertiary: #f3f4f6;
+  
+  /* Colores de texto */
+  --aura-text-primary: #111827;
+  --aura-text-secondary: #6b7280;
+  --aura-text-tertiary: #9ca3af;
+  
+  /* Sombras */
+  --aura-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --aura-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --aura-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --aura-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --aura-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --aura-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  
+  /* Bordes */
+  --aura-radius-sm: 0.5rem;
+  --aura-radius: 0.75rem;
+  --aura-radius-lg: 1rem;
+  --aura-radius-xl: 1.5rem;
+  --aura-radius-full: 9999px;
+  
+  /* Transiciones */
+  --aura-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --aura-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --aura-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   ESTILOS GLOBALES
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 50%, #f0fdf4 100%);
+  min-height: 100vh;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--aura-bg-tertiary);
+  border-radius: var(--aura-radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--aura-primary) 0%, var(--aura-secondary) 100%);
+  border-radius: var(--aura-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--aura-primary-dark) 0%, var(--aura-secondary-dark) 100%);
+}
+
+/* Selección de texto */
+::selection {
+  background: linear-gradient(135deg, var(--aura-primary) 0%, var(--aura-secondary) 100%);
+  color: white;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Clases de animación */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.5s ease-out;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.5s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* ========================================
+   ESTILOS PARA SCROLL EN TABLAS (TU CÓDIGO ORIGINAL MEJORADO)
+   ======================================== */
+.overflow-x-auto {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--aura-primary) var(--aura-bg-tertiary);
+  border-radius: var(--aura-radius);
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: var(--aura-bg-tertiary);
+  border-radius: var(--aura-radius-full);
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--aura-primary) 0%, var(--aura-secondary) 100%);
+  border-radius: var(--aura-radius-full);
+}
+
+/* ========================================
+   ANIMACIÓN PARA PESTAÑAS (TU CÓDIGO ORIGINAL)
+   ======================================== */
+main > div {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ========================================
+   ESTILOS PARA MONEDA COP (TU CÓDIGO ORIGINAL MEJORADO)
+   ======================================== */
+.text-cop {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  color: var(--aura-primary);
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--aura-primary) 0%, var(--aura-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================
+   ESTADO DE DEUDA PENDIENTE (TU CÓDIGO ORIGINAL MEJORADO)
+   ======================================== */
+.status-pendiente {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  color: var(--aura-danger);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--aura-radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid #fecaca;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all var(--aura-transition);
+}
+
+.status-pendiente::before {
+  content: "⚠️";
+  font-size: 0.7rem;
+}
+
+.status-pendiente:hover {
+  transform: scale(1.05);
+  box-shadow: var(--aura-shadow-sm);
+}
+
+/* Estado Pagado */
+.status-pagado {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  color: var(--aura-success);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--aura-radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid #bbf7d0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.status-pagado::before {
+  content: "✅";
+  font-size: 0.7rem;
+}
+
+/* ========================================
+   ESTILOS PARA TARJETAS (CARDS)
+   ======================================== */
+.card-aura {
+  background: var(--aura-bg-primary);
+  border-radius: var(--aura-radius-xl);
+  box-shadow: var(--aura-shadow-lg);
+  transition: all var(--aura-transition);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.card-aura:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--aura-shadow-2xl);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+/* ========================================
+   ESTILOS PARA BOTONES
+   ======================================== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--aura-primary) 0%, var(--aura-secondary) 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--aura-radius);
+  font-weight: 600;
+  transition: all var(--aura-transition);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--aura-shadow-lg);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--aura-bg-secondary);
+  color: var(--aura-text-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--aura-radius);
+  font-weight: 600;
+  transition: all var(--aura-transition);
+  border: 1px solid var(--aura-bg-tertiary);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--aura-bg-tertiary);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   ESTILOS PARA INPUTS
+   ======================================== */
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--aura-radius);
+  transition: all var(--aura-transition);
+  font-size: 0.875rem;
+  background: var(--aura-bg-primary);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--aura-primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  transform: translateY(-2px);
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: var(--aura-primary-light);
+}
+
+/* ========================================
+   ESTILOS PARA TABLAS
+   ======================================== */
+.table-aura {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-aura th {
+  text-align: left;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  font-weight: 600;
+  color: var(--aura-text-primary);
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.table-aura td {
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  transition: all var(--aura-transition-fast);
+}
+
+.table-aura tr:hover td {
+  background: rgba(124, 58, 237, 0.05);
+  transform: scale(1.01);
+}
+
+/* ========================================
+   ESTILOS PARA BADGES
+   ======================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--aura-radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.badge-warning {
+  background: #fed7aa;
+  color: #92400e;
+}
+
+.badge-danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-info {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* ========================================
+   ESTILOS PARA LOADING SKELETON
+   ======================================== */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--aura-radius);
+}
+
+/* ========================================
+   ESTILOS PARA MODALES
+   ======================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: var(--aura-bg-primary);
+  border-radius: var(--aura-radius-xl);
+  padding: 2rem;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  animation: scaleIn 0.3s ease-out;
+  box-shadow: var(--aura-shadow-2xl);
+}
+
+/* ========================================
+   ESTILOS PARA TOAST NOTIFICATIONS
+   ======================================== */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: white;
+  border-radius: var(--aura-radius);
+  padding: 1rem 1.5rem;
+  box-shadow: var(--aura-shadow-xl);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1100;
+  animation: fadeInUp 0.3s ease-out;
+  border-left: 4px solid var(--aura-primary);
+}
+
+.toast-success {
+  border-left-color: var(--aura-success);
+}
+
+.toast-error {
+  border-left-color: var(--aura-danger);
+}
+
+.toast-warning {
+  border-left-color: var(--aura-warning);
+}
+
+/* ========================================
+   UTILITIES ADICIONALES
+   ======================================== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--aura-primary) 0%, var(--aura-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.hover-lift {
+  transition: all var(--aura-transition);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--aura-shadow-xl);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+  .card-aura {
+    border-radius: var(--aura-radius);
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  input, select, textarea {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+}
+
+/* ========================================
+   IMPRESIÓN (Print Styles)
+   ======================================== */
+@media print {
+  .sidebar, .navbar, .footer, button {
+    display: none !important;
+  }
+  
+  main {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .card-aura {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
