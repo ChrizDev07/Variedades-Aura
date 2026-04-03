@@ -7,10 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencias
 node_modules
 dist
 dist-ssr
 *.local
+
+# Archivos de entorno (importante para seguridad)
+.env
+.env.local
+.env.*.local
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +28,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Archivos de caché de Vite
+.vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Archivos de construcción y empaquetado
+*.tgz
+*.tar.gz
+
+# Archivos de cobertura de pruebas
+coverage
+.nyc_output
+
+# Archivos específicos de Vercel (NO excluir estos)
+# !vercel.json  # Esto es importante: NO excluir vercel.json
