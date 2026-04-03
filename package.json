@@ -1,7 +1,6 @@
 {
   "name": "variedades-aura",
   "version": "2.0.0",
-  "description": "Sistema de gestión para tienda de variedades",
   "type": "module",
   "scripts": {
     "dev": "vite",
